@@ -109,7 +109,7 @@ async function getLocalStream() {
       width: 480,
       height: 320
     },
-    audio: true,
+    audio: false,
   });
   return stream;
 }
