@@ -10,4 +10,4 @@ EXPOSE 3000
 
 ADD . .
 
-ENTRYPOINT ["node", "server.js"]
+ENTRYPOINT ["node", "src/server.js"]

@@ -6,22 +6,17 @@
  */
 
 const SocketIO = require('socket.io');
-const nodeStatic = require('node-static');
 const http = require('http');
-
-
-const fileServer = new (nodeStatic.Server)();
-const server = http.createServer((req, res) => {
-  fileServer.serve(req, res, ()=> {
-    console.log('Serve static file');
-  });
-});
-const io = SocketIO(server);
+const express = require('express')
 
 
 const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Server is running on ${PORT}`);
+
+const app = express();
+app.use(express.static(__dirname));
+const io = SocketIO(http.Server(app));
+var server = app.listen(3000, () => {
+ console.log('server is running on port', server.address().port);
 });
 
 
@@ -57,4 +52,3 @@ io.on('connect', socket => {
     });
   });
 });
-
