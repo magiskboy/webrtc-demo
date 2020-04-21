@@ -10,12 +10,12 @@ const http = require('http');
 const express = require('express')
 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 80;
 
 const app = express();
 app.use(express.static(__dirname));
 const io = SocketIO(http.Server(app));
-var server = app.listen(3000, () => {
+var server = app.listen(PORT, () => {
  console.log('server is running on port', server.address().port);
 });
 
