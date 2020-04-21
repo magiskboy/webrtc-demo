@@ -14,10 +14,10 @@ const PORT = process.env.PORT || 80;
 
 const app = express();
 app.use(express.static(__dirname));
-const io = SocketIO(http.Server(app));
-var server = app.listen(PORT, () => {
- console.log('server is running on port', server.address().port);
+const server = app.listen(PORT, () => {
+ console.log('server is running on port', PORT);
 });
+const io = SocketIO.listen(server);
 
 
 io.on('connect', socket => {
