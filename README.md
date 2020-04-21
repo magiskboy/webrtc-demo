@@ -4,9 +4,9 @@
 #### Development
 
 ```bash
-$ npm install
-$ node server.js
-Server is running on 3000
+$ npm i
+$ PORT=3000 npm start
+server is running on 3000
 ```
 
 #### Run in docker
