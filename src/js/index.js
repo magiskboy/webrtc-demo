@@ -98,8 +98,8 @@ function addStream(stream, id) {
 
 
 async function setupLocalStream(id) {
-  const stream = await getLocalStream();
-  addStream(stream, id);
+  await getLocalStream();
+  addStream(window.localStream, id);
 }
 
 
