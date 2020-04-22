@@ -24,7 +24,7 @@ socket.on('new peer', async message => {
   const remotePeer = new RTCPeerConnection({
     iceServers: iceServers
   });
-  const stream = await getLocalStream();
+  const stream = window.localStream;
   remotePeer.addTrack(stream.getTracks()[0], stream);
   remotePeer.ontrack = event => {
     addStream(event.streams[0], message.from);
@@ -51,7 +51,7 @@ socket.on('offer', async message => {
   const remotePeer = new RTCPeerConnection({
     iceServers: iceServers
   });
-  const stream = await getLocalStream();
+  const stream = window.localStream;
   remotePeer.addTrack(stream.getTracks()[0], stream);
   remotePeer.ontrack = event => {
     addStream(event.streams[0], message.from);
@@ -111,5 +111,5 @@ async function getLocalStream() {
     },
     audio: false,
   });
-  return stream;
+  window.localStream = stream;
 }
