@@ -48,6 +48,7 @@ socket.on('new peer', async message => {
 
 
 socket.on('offer', async message => {
+  if (message.from == socket.id) return;
   const remotePeer = new RTCPeerConnection({
     iceServers: iceServers
   });
@@ -111,5 +112,6 @@ async function getLocalStream() {
     },
     audio: false,
   });
+  // const stream = await navigator.mediaDevices.getDisplayMedia();
   window.localStream = stream;
 }
